@@ -13,7 +13,7 @@ jobs:
         repository: aria2/aria2
 
     - run: |
-        sudo apt install -y gcc-mingw-w64-x86-64-posix g++-mingw-w64-x86-64-posix autopoint
+        sudo apt install -y gcc-mingw-w64-x86-64-win32 g++-mingw-w64-x86-64-win32 autopoint
 
     - run: |
         curl -L https://github.com/imba-tjd/build-aria2/raw/master/build.sh | bash

@@ -8,6 +8,7 @@ autoreconf -i && ./configure \
     --with-wintls \
     --disable-nls \
     --disable-bittorrent \
+    --disable-websocket \
     --without-included-gettext \
     --without-libcares \
     --without-gnutls \
@@ -22,10 +23,12 @@ autoreconf -i && ./configure \
     --without-libnettle \
     --with-cppunit-prefix=$PREFIX \
     ARIA2_STATIC=yes \
+    CFLAGS="-Os -flto"
+    CXXFLAGS="-Os -flto"
     CPPFLAGS="-I$PREFIX/include" \
-    LDFLAGS="-L$PREFIX/lib" \
+    LDFLAGS="-L$PREFIX/lib -Wl,--as-needed" \
     PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig"
 
 make -j4
 
-$HOST-strip src/aria2c.exe
+$HOST-strip -s src/aria2c.exe
