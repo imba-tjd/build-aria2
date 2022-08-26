@@ -1,0 +1,24 @@
+name: Build
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@main
+      with:
+        repository: aria2/aria2
+
+    - run: |
+        sudo apt install -y gcc-mingw-w64-x86-64-posix g++-mingw-w64-x86-64-posix autopoint
+
+    - run: |
+        curl -L https://github.com/imba-tjd/build-aria2/raw/master/build.sh | bash
+
+    - uses: actions/upload-artifact@main
+      with:
+        path: src/aria2c.exe
+        name: aria2c
