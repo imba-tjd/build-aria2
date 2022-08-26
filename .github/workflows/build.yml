@@ -12,11 +12,13 @@ jobs:
       with:
         repository: aria2/aria2
 
-    - run: |
-        sudo apt install -y gcc-mingw-w64-x86-64-win32 g++-mingw-w64-x86-64-win32 autopoint
+    - run: sudo apt install -y gcc-mingw-w64-x86-64-win32 g++-mingw-w64-x86-64-win32 autopoint
+
+    - run: curl -L https://github.com/imba-tjd/build-aria2/raw/master/configure.sh | bash
 
     - run: |
-        curl -L https://github.com/imba-tjd/build-aria2/raw/master/build.sh | bash
+        make -j4
+        $HOST-strip -s src/aria2c.exe
 
     - uses: actions/upload-artifact@main
       with:
