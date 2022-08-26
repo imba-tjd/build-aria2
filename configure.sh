@@ -23,8 +23,8 @@ autoreconf -i && ./configure \
     --without-libnettle \
     --with-cppunit-prefix=$PREFIX \
     ARIA2_STATIC=yes \
-    CFLAGS="-Os -flto" \
-    CXXFLAGS="-Os -flto" \
+    CFLAGS="-Os" \
+    CXXFLAGS="-Os" \
     CPPFLAGS="-I$PREFIX/include" \
-    LDFLAGS="-L$PREFIX/lib -Wl,--as-needed -flto" \
+    LDFLAGS="-L$PREFIX/lib -Wl,--as-needed" \
     PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig"

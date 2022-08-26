@@ -18,7 +18,7 @@ jobs:
 
     - run: |
         make -j4
-        $HOST-strip -s src/aria2c.exe
+        x86_64-w64-mingw32-strip -s src/aria2c.exe
 
     - uses: actions/upload-artifact@main
       with:
