@@ -5,12 +5,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@main
       with:
         repository: aria2/aria2
+        ref: release-1.37.0
 
     - run: sudo apt install -y gcc-mingw-w64-x86-64-win32 g++-mingw-w64-x86-64-win32 autopoint
 
