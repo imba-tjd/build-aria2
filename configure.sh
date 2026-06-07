@@ -8,6 +8,7 @@ autoreconf -i && ./configure \
     --with-wintls \
     --disable-nls \
     --disable-bittorrent \
+    --disable-metalink \
     --disable-websocket \
     --without-included-gettext \
     --without-libcares \
@@ -23,8 +24,8 @@ autoreconf -i && ./configure \
     --without-libnettle \
     --with-cppunit-prefix=$PREFIX \
     ARIA2_STATIC=yes \
-    CFLAGS="-Os" \
-    CXXFLAGS="-Os" \
+    CFLAGS="-Os -flto=auto -fno-fat-lto-objects" \
+    CXXFLAGS="-Os -flto=auto -fno-fat-lto-objects" \
     CPPFLAGS="-I$PREFIX/include" \
-    LDFLAGS="-L$PREFIX/lib -Wl,--as-needed" \
+    LDFLAGS="-L$PREFIX/lib -Wl,--as-needed -flto=auto" \
     PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig"
